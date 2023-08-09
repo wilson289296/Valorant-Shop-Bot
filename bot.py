@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
-from shopss import login
+from shopss import login, continue_otp
 import json
 import os
 import asyncio
@@ -116,16 +116,34 @@ async def process_queue():
         working = True
         task = task_queue.pop(0)
         channel = bot.get_channel(task["channel"])
-        otp = task.get("otp")
-        elap, success = await login(task["user"], task["pw"])
-        if success:
+        elap, result = await login(task["user"], task["pw"])
+        if result == "done":
             print("ss taken, sending photo")
             with open("ss.png", 'rb') as f:
                 picture = discord.File(f)
                 await channel.send(content=f"<@{task['discuser']}> time elapsed = {elap:.2f}s", file=picture)
             print(f"completed task for {task['user']}")
         else:
-            print("Aborted, encountered OTP. Prompting user.")
+            print("Encountered OTP. Prompting user.")
+            def check(message: discord.Message):
+                return message.channel.id == channel.id and message.author.id == task['discuser'] and len(message.content) == 6
+            try:
+                await channel.send(content=f"<@{task['discuser']}> login requires OTP - reply to this message with 6 digit OTP within 120 seconds.")
+                message = await bot.wait_for('message', check=check, timeout=120.0)
+            except asyncio.TimeoutError:
+                print("User did not respond in time, cancelling job.")
+                await channel.send(content=f"<@{task['discuser']}> did not respond with OTP in time. Login aborted.")
+            else:
+                elap2, result = await continue_otp(message.content)
+                if result == "done":
+                    print("ss taken, sending photo")
+                    with open("ss.png", 'rb') as f:
+                        picture = discord.File(f)
+                        await channel.send(content=f"<@{task['discuser']}> time elapsed = {elap + elap2:.2f}s", file=picture)
+                    print(f"completed task for {task['user']}")
+                else:
+                    print("User submitted invalid OTP, cancelling job.")
+                    await channel.send(content=f"<@{task['discuser']}> submitted invalid OTP. Login aborted.")
         await asyncio.sleep(5)
         working = False
 

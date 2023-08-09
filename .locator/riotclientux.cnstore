@@ -1,795 +1,1003 @@
-﻿{
-  "id": "3c137e81-0f5c-45f8-b713-cb43620d3f0d",
-  "name": "riotclientux",
-  "nodes": [],
-  "locators": [
-    {
-      "id": "a7684bc5-bf0e-41e8-8eff-62e86689b2cc",
-      "name": "riotlogo",
-      "filePath": "0a915f09-a2e4-4e20-b1a7-0011048be90a.jpg",
-      "imageFilePath": "f399b2df-9545-4e6c-9c9e-0e2f5395ba00.jpg",
-      "content": {
-        "automationType": "Uia",
-        "processName": {
-          "value": "RiotClientUx"
-        },
-        "filePath": {
-          "value": "RiotClientUx.exe"
-        },
-        "version": {
-          "value": "1.3"
-        },
-        "childControls": [
-          {
-            "identifier": {
-              "automationId": {
-                "value": "",
-                "excluded": true
-              },
-              "isPassword": {
-                "value": "False",
-                "excluded": true
-              },
-              "orientation": {
-                "value": "None",
-                "excluded": true
-              },
-              "role": {
-                "value": "window"
-              },
-              "isDirectChild": {
-                "value": "True"
-              },
-              "className": {
-                "value": "RCLIENT"
-              },
-              "controlMetaType": "Uia",
-              "name": {
-                "value": "Riot Client Main"
-              },
-              "index": {
-                "value": "1",
-                "excluded": true
-              }
-            },
-            "childControls": [
-              {
-                "identifier": {
-                  "automationId": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "isPassword": {
-                    "value": "False",
-                    "excluded": true
-                  },
-                  "orientation": {
-                    "value": "None",
-                    "excluded": true
-                  },
-                  "role": {
-                    "value": "pane"
-                  },
-                  "isDirectChild": {
-                    "value": "True"
-                  },
-                  "className": {
-                    "value": "CefBrowserWindow"
-                  },
-                  "controlMetaType": "Uia",
-                  "name": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "index": {
-                    "value": "1",
-                    "excluded": true
-                  }
-                },
-                "childControls": [
-                  {
-                    "identifier": {
-                      "automationId": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "isPassword": {
-                        "value": "False",
-                        "excluded": true
-                      },
-                      "orientation": {
-                        "value": "None",
-                        "excluded": true
-                      },
-                      "role": {
-                        "value": "pane"
-                      },
-                      "isDirectChild": {
-                        "value": "True"
-                      },
-                      "className": {
-                        "value": "Chrome_WidgetWin_0"
-                      },
-                      "controlMetaType": "Uia",
-                      "name": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "index": {
-                        "value": "1",
-                        "excluded": true
-                      }
-                    },
-                    "childControls": [
-                      {
-                        "identifier": {
-                          "isPassword": {
-                            "value": "False",
-                            "excluded": true
-                          },
-                          "orientation": {
-                            "value": "None",
-                            "excluded": true
-                          },
-                          "role": {
-                            "value": "document"
-                          },
-                          "isDirectChild": {
-                            "value": "True"
-                          },
-                          "className": {
-                            "value": "Chrome_RenderWidgetHostHWND"
-                          },
-                          "controlMetaType": "Uia",
-                          "name": {
-                            "value": "",
-                            "excluded": true
-                          },
-                          "index": {
-                            "value": "1",
-                            "excluded": true
-                          }
-                        },
-                        "childControls": [
-                          {
-                            "identifier": {
-                              "filePath": {
-                                "value": "f399b2df-9545-4e6c-9c9e-0e2f5395ba00.jpg"
-                              },
-                              "accuracy": {
-                                "value": "0.75"
-                              },
-                              "matchIndex": {
-                                "value": "0"
-                              },
-                              "timeout": {
-                                "value": "5000"
-                              },
-                              "method": {
-                                "value": "inRegionHighestAccuracy"
-                              },
-                              "selectionRect": {
-                                "value": "1274,704,153,67"
-                              },
-                              "elementRect": {
-                                "value": "1152,648,1536,864"
-                              },
-                              "dpi": {
-                                "value": "96"
-                              },
-                              "controlMetaType": "Image"
-                            }
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "0754e941-7e58-4984-abf8-91976134dd29",
-      "name": "redbutton",
-      "filePath": "bb45023b-8107-4792-a0ce-fb8c0e037dff.jpg",
-      "imageFilePath": "41ddfaa2-68d0-4c5f-94db-1ccb18e88d6e.jpg",
-      "content": {
-        "automationType": "Uia",
-        "processName": {
-          "value": "RiotClientUx"
-        },
-        "filePath": {
-          "value": "RiotClientUx.exe"
-        },
-        "version": {
-          "value": "1.3"
-        },
-        "childControls": [
-          {
-            "identifier": {
-              "automationId": {
-                "value": "",
-                "excluded": true
-              },
-              "isPassword": {
-                "value": "False",
-                "excluded": true
-              },
-              "orientation": {
-                "value": "None",
-                "excluded": true
-              },
-              "role": {
-                "value": "window"
-              },
-              "isDirectChild": {
-                "value": "True"
-              },
-              "className": {
-                "value": "RCLIENT"
-              },
-              "controlMetaType": "Uia",
-              "name": {
-                "value": "Riot Client Main"
-              },
-              "index": {
-                "value": "1",
-                "excluded": true
-              }
-            },
-            "childControls": [
-              {
-                "identifier": {
-                  "automationId": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "isPassword": {
-                    "value": "False",
-                    "excluded": true
-                  },
-                  "orientation": {
-                    "value": "None",
-                    "excluded": true
-                  },
-                  "role": {
-                    "value": "pane"
-                  },
-                  "isDirectChild": {
-                    "value": "True"
-                  },
-                  "className": {
-                    "value": "CefBrowserWindow"
-                  },
-                  "controlMetaType": "Uia",
-                  "name": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "index": {
-                    "value": "1",
-                    "excluded": true
-                  }
-                },
-                "childControls": [
-                  {
-                    "identifier": {
-                      "automationId": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "isPassword": {
-                        "value": "False",
-                        "excluded": true
-                      },
-                      "orientation": {
-                        "value": "None",
-                        "excluded": true
-                      },
-                      "role": {
-                        "value": "pane"
-                      },
-                      "isDirectChild": {
-                        "value": "True"
-                      },
-                      "className": {
-                        "value": "Chrome_WidgetWin_0"
-                      },
-                      "controlMetaType": "Uia",
-                      "name": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "index": {
-                        "value": "1",
-                        "excluded": true
-                      }
-                    },
-                    "childControls": [
-                      {
-                        "identifier": {
-                          "isPassword": {
-                            "value": "False",
-                            "excluded": true
-                          },
-                          "orientation": {
-                            "value": "None",
-                            "excluded": true
-                          },
-                          "role": {
-                            "value": "document"
-                          },
-                          "isDirectChild": {
-                            "value": "True"
-                          },
-                          "className": {
-                            "value": "Chrome_RenderWidgetHostHWND"
-                          },
-                          "controlMetaType": "Uia",
-                          "name": {
-                            "value": "",
-                            "excluded": true
-                          },
-                          "index": {
-                            "value": "1",
-                            "excluded": true
-                          }
-                        },
-                        "childControls": [
-                          {
-                            "identifier": {
-                              "filePath": {
-                                "value": "41ddfaa2-68d0-4c5f-94db-1ccb18e88d6e.jpg"
-                              },
-                              "accuracy": {
-                                "value": "0.75"
-                              },
-                              "matchIndex": {
-                                "value": "0"
-                              },
-                              "timeout": {
-                                "value": "5000"
-                              },
-                              "method": {
-                                "value": "inRegionHighestAccuracy"
-                              },
-                              "selectionRect": {
-                                "value": "1316,1299,70,73"
-                              },
-                              "elementRect": {
-                                "value": "1152,648,1536,864"
-                              },
-                              "dpi": {
-                                "value": "96"
-                              },
-                              "controlMetaType": "Image"
-                            }
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "a99e7048-d3bc-45fd-bed8-2302c45d1914",
-      "name": "playbutton",
-      "filePath": "4bbfa335-b1c0-425f-82f4-d43059b4ccbd.jpg",
-      "imageFilePath": "0a3ba23c-d650-4050-813c-91a3f1a395c6.jpg",
-      "content": {
-        "automationType": "Uia",
-        "processName": {
-          "value": "RiotClientUx"
-        },
-        "filePath": {
-          "value": "RiotClientUx.exe"
-        },
-        "version": {
-          "value": "1.3"
-        },
-        "childControls": [
-          {
-            "identifier": {
-              "automationId": {
-                "value": "",
-                "excluded": true
-              },
-              "isPassword": {
-                "value": "False",
-                "excluded": true
-              },
-              "orientation": {
-                "value": "None",
-                "excluded": true
-              },
-              "role": {
-                "value": "window"
-              },
-              "isDirectChild": {
-                "value": "True"
-              },
-              "className": {
-                "value": "RCLIENT"
-              },
-              "controlMetaType": "Uia",
-              "name": {
-                "value": "Riot Client Main"
-              },
-              "index": {
-                "value": "1",
-                "excluded": true
-              }
-            },
-            "childControls": [
-              {
-                "identifier": {
-                  "automationId": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "isPassword": {
-                    "value": "False",
-                    "excluded": true
-                  },
-                  "orientation": {
-                    "value": "None",
-                    "excluded": true
-                  },
-                  "role": {
-                    "value": "pane"
-                  },
-                  "isDirectChild": {
-                    "value": "True"
-                  },
-                  "className": {
-                    "value": "CefBrowserWindow"
-                  },
-                  "controlMetaType": "Uia",
-                  "name": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "index": {
-                    "value": "1",
-                    "excluded": true
-                  }
-                },
-                "childControls": [
-                  {
-                    "identifier": {
-                      "automationId": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "isPassword": {
-                        "value": "False",
-                        "excluded": true
-                      },
-                      "orientation": {
-                        "value": "None",
-                        "excluded": true
-                      },
-                      "role": {
-                        "value": "pane"
-                      },
-                      "isDirectChild": {
-                        "value": "True"
-                      },
-                      "className": {
-                        "value": "Chrome_WidgetWin_0"
-                      },
-                      "controlMetaType": "Uia",
-                      "name": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "index": {
-                        "value": "1",
-                        "excluded": true
-                      }
-                    },
-                    "childControls": [
-                      {
-                        "identifier": {
-                          "isPassword": {
-                            "value": "False",
-                            "excluded": true
-                          },
-                          "orientation": {
-                            "value": "None",
-                            "excluded": true
-                          },
-                          "role": {
-                            "value": "document"
-                          },
-                          "isDirectChild": {
-                            "value": "True"
-                          },
-                          "className": {
-                            "value": "Chrome_RenderWidgetHostHWND"
-                          },
-                          "controlMetaType": "Uia",
-                          "name": {
-                            "value": "",
-                            "excluded": true
-                          },
-                          "index": {
-                            "value": "1",
-                            "excluded": true
-                          }
-                        },
-                        "childControls": [
-                          {
-                            "identifier": {
-                              "automationId": {
-                                "value": "",
-                                "excluded": true
-                              },
-                              "isPassword": {
-                                "value": "False",
-                                "excluded": true
-                              },
-                              "orientation": {
-                                "value": "None",
-                                "excluded": true
-                              },
-                              "role": {
-                                "value": "custom"
-                              },
-                              "isDirectChild": {
-                                "value": "True"
-                              },
-                              "className": {
-                                "value": "",
-                                "excluded": true
-                              },
-                              "controlMetaType": "Uia",
-                              "name": {
-                                "value": "auto-update-reminder Enable auto-update Keep your games updated *"
-                              },
-                              "index": {
-                                "value": "1",
-                                "excluded": true
-                              }
-                            },
-                            "childControls": [
-                              {
-                                "identifier": {
-                                  "filePath": {
-                                    "value": "0a3ba23c-d650-4050-813c-91a3f1a395c6.jpg"
-                                  },
-                                  "accuracy": {
-                                    "value": "0.75"
-                                  },
-                                  "matchIndex": {
-                                    "value": "0"
-                                  },
-                                  "timeout": {
-                                    "value": "5000"
-                                  },
-                                  "method": {
-                                    "value": "inRegionHighestAccuracy"
-                                  },
-                                  "selectionRect": {
-                                    "value": "2291,1524,93,39"
-                                  },
-                                  "elementRect": {
-                                    "value": "2127,734,1536,864"
-                                  },
-                                  "dpi": {
-                                    "value": "96"
-                                  },
-                                  "controlMetaType": "Image"
-                                }
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "0d2b52c8-b037-4223-8478-43459fed56c9",
-      "name": "verif_text",
-      "filePath": "79b36aea-a13f-4ad1-ab91-5c2706ec09e6.jpg",
-      "imageFilePath": "e9468c10-a273-4d66-8bf1-c4e9e7495fdb.jpg",
-      "content": {
-        "automationType": "Uia",
-        "processName": {
-          "value": "RiotClientUx"
-        },
-        "filePath": {
-          "value": "RiotClientUx.exe"
-        },
-        "version": {
-          "value": "1.3"
-        },
-        "childControls": [
-          {
-            "identifier": {
-              "automationId": {
-                "value": "",
-                "excluded": true
-              },
-              "isPassword": {
-                "value": "False",
-                "excluded": true
-              },
-              "orientation": {
-                "value": "None",
-                "excluded": true
-              },
-              "role": {
-                "value": "window"
-              },
-              "isDirectChild": {
-                "value": "True"
-              },
-              "className": {
-                "value": "RCLIENT"
-              },
-              "controlMetaType": "Uia",
-              "name": {
-                "value": "Riot Client Main"
-              },
-              "index": {
-                "value": "1",
-                "excluded": true
-              }
-            },
-            "childControls": [
-              {
-                "identifier": {
-                  "automationId": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "isPassword": {
-                    "value": "False",
-                    "excluded": true
-                  },
-                  "orientation": {
-                    "value": "None",
-                    "excluded": true
-                  },
-                  "role": {
-                    "value": "pane"
-                  },
-                  "isDirectChild": {
-                    "value": "True"
-                  },
-                  "className": {
-                    "value": "CefBrowserWindow"
-                  },
-                  "controlMetaType": "Uia",
-                  "name": {
-                    "value": "",
-                    "excluded": true
-                  },
-                  "index": {
-                    "value": "1",
-                    "excluded": true
-                  }
-                },
-                "childControls": [
-                  {
-                    "identifier": {
-                      "automationId": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "isPassword": {
-                        "value": "False",
-                        "excluded": true
-                      },
-                      "orientation": {
-                        "value": "None",
-                        "excluded": true
-                      },
-                      "role": {
-                        "value": "pane"
-                      },
-                      "isDirectChild": {
-                        "value": "True"
-                      },
-                      "className": {
-                        "value": "Chrome_WidgetWin_0"
-                      },
-                      "controlMetaType": "Uia",
-                      "name": {
-                        "value": "",
-                        "excluded": true
-                      },
-                      "index": {
-                        "value": "1",
-                        "excluded": true
-                      }
-                    },
-                    "childControls": [
-                      {
-                        "identifier": {
-                          "isPassword": {
-                            "value": "False",
-                            "excluded": true
-                          },
-                          "orientation": {
-                            "value": "None",
-                            "excluded": true
-                          },
-                          "role": {
-                            "value": "document"
-                          },
-                          "isDirectChild": {
-                            "value": "True"
-                          },
-                          "className": {
-                            "value": "Chrome_RenderWidgetHostHWND"
-                          },
-                          "controlMetaType": "Uia",
-                          "name": {
-                            "value": "",
-                            "excluded": true
-                          },
-                          "index": {
-                            "value": "1",
-                            "excluded": true
-                          }
-                        },
-                        "childControls": [
-                          {
-                            "identifier": {
-                              "filePath": {
-                                "value": "e9468c10-a273-4d66-8bf1-c4e9e7495fdb.jpg"
-                              },
-                              "accuracy": {
-                                "value": "0.75"
-                              },
-                              "matchIndex": {
-                                "value": "0"
-                              },
-                              "timeout": {
-                                "value": "5000"
-                              },
-                              "method": {
-                                "value": "inRegionHighestAccuracy"
-                              },
-                              "selectionRect": {
-                                "value": "1181,816,345,120"
-                              },
-                              "elementRect": {
-                                "value": "1152,648,1536,864"
-                              },
-                              "dpi": {
-                                "value": "96"
-                              },
-                              "controlMetaType": "Image"
-                            }
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
+{
+	"id": "3c137e81-0f5c-45f8-b713-cb43620d3f0d",
+	"name": "riotclientux",
+	"nodes": [],
+	"locators": [
+		{
+			"id": "a7684bc5-bf0e-41e8-8eff-62e86689b2cc",
+			"name": "signintext",
+			"filePath": "d42b19e5-5a70-41a2-9bd0-bfe34e339836.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "RiotClientUx"
+				},
+				"filePath": {
+					"value": "RiotClientUx.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "RCLIENT"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Riot Client Main"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "",
+										"excluded": true
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "pane"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "CefBrowserWindow"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "",
+												"excluded": true
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "pane"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Chrome_WidgetWin_0"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										},
+										"childControls": [
+											{
+												"identifier": {
+													"isPassword": {
+														"value": "False",
+														"excluded": true
+													},
+													"orientation": {
+														"value": "None",
+														"excluded": true
+													},
+													"role": {
+														"value": "document"
+													},
+													"isDirectChild": {
+														"value": "True"
+													},
+													"className": {
+														"value": "Chrome_RenderWidgetHostHWND"
+													},
+													"controlMetaType": "Uia",
+													"name": {
+														"value": "",
+														"excluded": true
+													},
+													"index": {
+														"value": "1",
+														"excluded": true
+													}
+												},
+												"childControls": [
+													{
+														"identifier": {
+															"automationId": {
+																"value": "",
+																"excluded": true
+															},
+															"isPassword": {
+																"value": "False",
+																"excluded": true
+															},
+															"orientation": {
+																"value": "None",
+																"excluded": true
+															},
+															"role": {
+																"value": "text"
+															},
+															"isDirectChild": {
+																"value": "True"
+															},
+															"className": {
+																"value": "",
+																"excluded": true
+															},
+															"controlMetaType": "Uia",
+															"name": {
+																"value": "Sign in"
+															},
+															"index": {
+																"value": "1",
+																"excluded": true
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "0754e941-7e58-4984-abf8-91976134dd29",
+			"name": "redbutton",
+			"filePath": "f89071a5-3995-413a-9dc2-d2699dd5fb9b.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "RiotClientUx"
+				},
+				"filePath": {
+					"value": "RiotClientUx.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "RCLIENT"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Riot Client Main"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "",
+										"excluded": true
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "pane"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "CefBrowserWindow"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "",
+												"excluded": true
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "pane"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Chrome_WidgetWin_0"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										},
+										"childControls": [
+											{
+												"identifier": {
+													"isPassword": {
+														"value": "False",
+														"excluded": true
+													},
+													"orientation": {
+														"value": "None",
+														"excluded": true
+													},
+													"role": {
+														"value": "document"
+													},
+													"isDirectChild": {
+														"value": "True"
+													},
+													"className": {
+														"value": "Chrome_RenderWidgetHostHWND"
+													},
+													"controlMetaType": "Uia",
+													"name": {
+														"value": "",
+														"excluded": true
+													},
+													"index": {
+														"value": "1",
+														"excluded": true
+													}
+												},
+												"childControls": [
+													{
+														"identifier": {
+															"automationId": {
+																"value": "",
+																"excluded": true
+															},
+															"isPassword": {
+																"value": "False",
+																"excluded": true
+															},
+															"orientation": {
+																"value": "None",
+																"excluded": true
+															},
+															"role": {
+																"value": "button"
+															},
+															"isDirectChild": {
+																"value": "True"
+															},
+															"className": {
+																"value": "",
+																"excluded": true
+															},
+															"controlMetaType": "Uia",
+															"name": {
+																"value": "Sign in"
+															},
+															"index": {
+																"value": "1",
+																"excluded": true
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "a99e7048-d3bc-45fd-bed8-2302c45d1914",
+			"name": "playbutton",
+			"filePath": "e94a4f4e-1ff7-4418-815d-8c5156e84e6d.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "RiotClientUx"
+				},
+				"filePath": {
+					"value": "RiotClientUx.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "RCLIENT"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Riot Client Main"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "",
+										"excluded": true
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "pane"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "CefBrowserWindow"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "",
+												"excluded": true
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "pane"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Chrome_WidgetWin_0"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										},
+										"childControls": [
+											{
+												"identifier": {
+													"isPassword": {
+														"value": "False",
+														"excluded": true
+													},
+													"orientation": {
+														"value": "None",
+														"excluded": true
+													},
+													"role": {
+														"value": "document"
+													},
+													"isDirectChild": {
+														"value": "True"
+													},
+													"className": {
+														"value": "Chrome_RenderWidgetHostHWND"
+													},
+													"controlMetaType": "Uia",
+													"name": {
+														"value": "",
+														"excluded": true
+													},
+													"index": {
+														"value": "1",
+														"excluded": true
+													}
+												},
+												"childControls": [
+													{
+														"identifier": {
+															"automationId": {
+																"value": "",
+																"excluded": true
+															},
+															"isPassword": {
+																"value": "False",
+																"excluded": true
+															},
+															"orientation": {
+																"value": "None",
+																"excluded": true
+															},
+															"role": {
+																"value": "custom"
+															},
+															"isDirectChild": {
+																"value": "True"
+															},
+															"className": {
+																"value": "",
+																"excluded": true
+															},
+															"controlMetaType": "Uia",
+															"name": {
+																"value": "Play ESPORTS Play Publishing Card Video Ticking Away ft. Grabbit*"
+															},
+															"index": {
+																"value": "1",
+																"excluded": true
+															}
+														},
+														"childControls": [
+															{
+																"identifier": {
+																	"automationId": {
+																		"value": "",
+																		"excluded": true
+																	},
+																	"isPassword": {
+																		"value": "False",
+																		"excluded": true
+																	},
+																	"orientation": {
+																		"value": "None",
+																		"excluded": true
+																	},
+																	"role": {
+																		"value": "button"
+																	},
+																	"isDirectChild": {
+																		"value": "True"
+																	},
+																	"className": {
+																		"value": "",
+																		"excluded": true
+																	},
+																	"controlMetaType": "Uia",
+																	"name": {
+																		"value": "Play"
+																	},
+																	"index": {
+																		"value": "1",
+																		"excluded": true
+																	}
+																}
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "0d2b52c8-b037-4223-8478-43459fed56c9",
+			"name": "verif_text",
+			"filePath": "c160ae32-346e-4f7e-9ae1-245cfeecd113.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "RiotClientUx"
+				},
+				"filePath": {
+					"value": "RiotClientUx.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "RCLIENT"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Riot Client Main"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "",
+										"excluded": true
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "pane"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "CefBrowserWindow"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "",
+												"excluded": true
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "pane"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Chrome_WidgetWin_0"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										},
+										"childControls": [
+											{
+												"identifier": {
+													"isPassword": {
+														"value": "False",
+														"excluded": true
+													},
+													"orientation": {
+														"value": "None",
+														"excluded": true
+													},
+													"role": {
+														"value": "document"
+													},
+													"isDirectChild": {
+														"value": "True"
+													},
+													"className": {
+														"value": "Chrome_RenderWidgetHostHWND"
+													},
+													"controlMetaType": "Uia",
+													"name": {
+														"value": "",
+														"excluded": true
+													},
+													"index": {
+														"value": "1",
+														"excluded": true
+													}
+												},
+												"childControls": [
+													{
+														"identifier": {
+															"automationId": {
+																"value": "",
+																"excluded": true
+															},
+															"isPassword": {
+																"value": "False",
+																"excluded": true
+															},
+															"orientation": {
+																"value": "None",
+																"excluded": true
+															},
+															"role": {
+																"value": "text"
+															},
+															"isDirectChild": {
+																"value": "True"
+															},
+															"className": {
+																"value": "",
+																"excluded": true
+															},
+															"controlMetaType": "Uia",
+															"name": {
+																"value": "Verification required"
+															},
+															"index": {
+																"value": "1",
+																"excluded": true
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "ae0847ad-3c3e-4143-9bd6-41a1f463268e",
+			"name": "invalid_otp",
+			"filePath": "cdfb3ded-7bf0-4d6b-b0d8-3454399b45ce.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "RiotClientUx"
+				},
+				"filePath": {
+					"value": "RiotClientUx.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "RCLIENT"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Riot Client Main"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "",
+										"excluded": true
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "pane"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "CefBrowserWindow"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "",
+												"excluded": true
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "pane"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Chrome_WidgetWin_0"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										},
+										"childControls": [
+											{
+												"identifier": {
+													"isPassword": {
+														"value": "False",
+														"excluded": true
+													},
+													"orientation": {
+														"value": "None",
+														"excluded": true
+													},
+													"role": {
+														"value": "document"
+													},
+													"isDirectChild": {
+														"value": "True"
+													},
+													"className": {
+														"value": "Chrome_RenderWidgetHostHWND"
+													},
+													"controlMetaType": "Uia",
+													"name": {
+														"value": "",
+														"excluded": true
+													},
+													"index": {
+														"value": "1",
+														"excluded": true
+													}
+												},
+												"childControls": [
+													{
+														"identifier": {
+															"automationId": {
+																"value": "",
+																"excluded": true
+															},
+															"isPassword": {
+																"value": "False",
+																"excluded": true
+															},
+															"orientation": {
+																"value": "None",
+																"excluded": true
+															},
+															"role": {
+																"value": "text"
+															},
+															"isDirectChild": {
+																"value": "True"
+															},
+															"className": {
+																"value": "",
+																"excluded": true
+															},
+															"controlMetaType": "Uia",
+															"name": {
+																"value": "This code was invalid. Please try again."
+															},
+															"index": {
+																"value": "1",
+																"excluded": true
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
 }

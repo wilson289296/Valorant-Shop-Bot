@@ -38,25 +38,6 @@ def to_thread(func):
 def login(username, password):
     start = perf_counter()
 
-    # cc.send_hotkey('{WIN}')
-
-    # # detect start menu open and ready for query
-
-    # starthue = 0
-    # while starthue < START_MENU_HUE_RANGE[0] or starthue > START_MENU_HUE_RANGE[1]:
-    #     start_pixel = ImageGrab.grab(bbox=(
-    #         START_MENU_PIXEL_COORDS[0], 
-    #         START_MENU_PIXEL_COORDS[1], 
-    #         START_MENU_PIXEL_COORDS[0]+1, 
-    #         START_MENU_PIXEL_COORDS[1]+1)).getcolors()[0][1]
-    #     starthue = colorsys.rgb_to_hsv(start_pixel[0], start_pixel[1], start_pixel[2])[0] * 255
-    #     print(".", end="")
-    #     sleep(0.5)
-    
-    # print("\nStart menu open, launching Valorant Client")
-
-    # cc.send_hotkey('valorant{ENTER}')
-
     cc.send_hotkey('{WIN DOWN}r{WIN UP}')
     while ImageGrab.grab(bbox=(
         WINR_COORDS[0], 
@@ -67,10 +48,6 @@ def login(username, password):
         print(".", end="")
 
     cc.send_hotkey("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\VALORANT.lnk{ENTER}")
-    # ui(locator.explorer.winrfield).click()
-    # ui(locator.explorer.winrfield).set_text("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\VALORANT.lnk", overwrite=True)
-    # sleep(0.1)
-    # cc.send_hotkey('{ENTER}')
 
     while ImageGrab.grab(bbox=(
         RIOT_LOGO_PIXEL_COORDS[0], 
@@ -81,8 +58,7 @@ def login(username, password):
         print(".", end="")
 
     print("\nriot client loaded")
-    # sleep(2)
-    ui(locator.riotclientux.riotlogo).click()
+    ui(locator.riotclientux.signintext).click()
     cc.send_hotkey('{TAB}')
     cc.send_hotkey(username)
     cc.send_hotkey('{TAB}')
@@ -143,6 +119,63 @@ def login(username, password):
     print(f"elapsed: {perf_counter() - start}s")
     return perf_counter() - start, "done"
 
+@to_thread
+def continue_otp(otp):
+    start = perf_counter()
+    print("Received OTP from user, entering")
+    cc.send_hotkey(otp + '{TAB}{ENTER}')
+    play_exists = False
+    otp_fail = False
+    print("waiting for OTP/Play")
+    while not otp_fail and not play_exists:
+        play_exists = cc.is_existing(locator.riotclientux.playbutton)
+        if not play_exists:
+            otp_fail = cc.is_existing(locator.riotclientux.invalid_otp)
+        print(".", end="")
+        sleep(0.25)
+    
+    if otp_fail:
+        return perf_counter() - start, "invalid"
+    
+    elif play_exists:
+        ui(locator.riotclientux.playbutton).click()
+        print("\nLogin successful, launching game")
+
+    print("waiting for store")
+
+    in_store = False
+    while not in_store:
+        # cc.mouse.move()
+        cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+        sleep(0.1)
+        # in_store = cc.is_existing(locator.valorant_win64_shipping.storebackbutton)
+        if ImageGrab.grab(bbox=(
+            STORE_PLAY_COORDS[0], 
+            STORE_PLAY_COORDS[1], 
+            STORE_PLAY_COORDS[0]+1, 
+            STORE_PLAY_COORDS[1]+1)).getcolors()[0][1] == STORE_PLAY_COLOR:
+            in_store = True
+    
+    print("In store, capturing screenshot")
+    store_ss = ImageGrab.grab(bbox=(
+        SS_UPPER_LEFT[0],
+        SS_UPPER_LEFT[1],
+        SS_LOWER_RIGHT[0],
+        SS_LOWER_RIGHT[1]
+    ))
+    store_ss.save("ss.png")
+
+    print("signing out and closing valorant")
+    # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
+    cc.mouse.click(SETTINGS_COORDS[0], SETTINGS_COORDS[1])
+    sleep(0.1)
+    cc.mouse.click(ETD_COORDS[0], ETD_COORDS[1])
+    sleep(0.1)
+    cc.mouse.click(SIGN_OUT_COORDS[0], SIGN_OUT_COORDS[1])
+
+    print("done!")
+    print(f"elapsed: {perf_counter() - start}s")
+    return perf_counter() - start, "done"
 
 
 if __name__ == "__main__":
