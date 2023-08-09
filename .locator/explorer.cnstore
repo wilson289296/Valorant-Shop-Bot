@@ -1,0 +1,135 @@
+{
+	"id": "0f06fede-3f6c-44b8-91d3-6405cb60b94a",
+	"name": "explorer",
+	"nodes": [],
+	"locators": [
+		{
+			"id": "510e9f67-70d5-44d7-96d7-f021a56e5c21",
+			"name": "winrfield",
+			"filePath": "dfad0385-8348-4a2c-befb-eef77f129fe7.jpg",
+			"content": {
+				"automationType": "Uia",
+				"processName": {
+					"value": "explorer"
+				},
+				"filePath": {
+					"value": "explorer.exe"
+				},
+				"version": {
+					"value": "1.3"
+				},
+				"childControls": [
+					{
+						"identifier": {
+							"automationId": {
+								"value": "",
+								"excluded": true
+							},
+							"isPassword": {
+								"value": "False",
+								"excluded": true
+							},
+							"orientation": {
+								"value": "None",
+								"excluded": true
+							},
+							"role": {
+								"value": "window"
+							},
+							"isDirectChild": {
+								"value": "True"
+							},
+							"className": {
+								"value": "#32770"
+							},
+							"controlMetaType": "Uia",
+							"name": {
+								"value": "Run"
+							},
+							"index": {
+								"value": "1",
+								"excluded": true
+							}
+						},
+						"childControls": [
+							{
+								"identifier": {
+									"automationId": {
+										"value": "12298"
+									},
+									"isPassword": {
+										"value": "False",
+										"excluded": true
+									},
+									"orientation": {
+										"value": "None",
+										"excluded": true
+									},
+									"role": {
+										"value": "comboBox"
+									},
+									"accessKey": {
+										"value": "Alt+o"
+									},
+									"isDirectChild": {
+										"value": "True"
+									},
+									"className": {
+										"value": "ComboBox"
+									},
+									"controlMetaType": "Uia",
+									"name": {
+										"value": "Open:",
+										"excluded": true
+									},
+									"index": {
+										"value": "1",
+										"excluded": true
+									}
+								},
+								"childControls": [
+									{
+										"identifier": {
+											"automationId": {
+												"value": "1001"
+											},
+											"isPassword": {
+												"value": "False",
+												"excluded": true
+											},
+											"orientation": {
+												"value": "None",
+												"excluded": true
+											},
+											"role": {
+												"value": "edit"
+											},
+											"accessKey": {
+												"value": "Alt+o"
+											},
+											"isDirectChild": {
+												"value": "True"
+											},
+											"className": {
+												"value": "Edit"
+											},
+											"controlMetaType": "Uia",
+											"name": {
+												"value": "Open:",
+												"excluded": true
+											},
+											"index": {
+												"value": "1",
+												"excluded": true
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

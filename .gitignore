@@ -1,0 +1,4 @@
+*.key
+*.json
+*.png
+__pycache__/

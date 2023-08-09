@@ -1,0 +1,260 @@
+﻿{
+  "id": "1e1e2d24-be20-44a1-b79c-b1a659506a3d",
+  "name": "valorant_win64_shipping",
+  "nodes": [],
+  "locators": [
+    {
+      "id": "998238ef-afee-4d67-95c5-411ef9c6e9da",
+      "name": "playbutton",
+      "filePath": "d1ba518b-df06-4f8c-852a-c97e1c679d96.jpg",
+      "imageFilePath": "537d5a05-e70f-474c-9d95-b262eb28a73b.jpg",
+      "content": {
+        "automationType": "Uia",
+        "processName": {
+          "value": "VALORANT-Win64-Shipping"
+        },
+        "filePath": {
+          "value": "VALORANT-Win64-Shipping.exe"
+        },
+        "version": {
+          "value": "1.3"
+        },
+        "childControls": [
+          {
+            "identifier": {
+              "automationId": {
+                "value": "",
+                "excluded": true
+              },
+              "isPassword": {
+                "value": "False",
+                "excluded": true
+              },
+              "orientation": {
+                "value": "None",
+                "excluded": true
+              },
+              "role": {
+                "value": "window"
+              },
+              "isDirectChild": {
+                "value": "True"
+              },
+              "className": {
+                "value": "UnrealWindow"
+              },
+              "controlMetaType": "Uia",
+              "name": {
+                "value": "VALORANT  "
+              },
+              "index": {
+                "value": "1",
+                "excluded": true
+              }
+            },
+            "childControls": [
+              {
+                "identifier": {
+                  "filePath": {
+                    "value": "537d5a05-e70f-474c-9d95-b262eb28a73b.jpg"
+                  },
+                  "accuracy": {
+                    "value": "0.75"
+                  },
+                  "matchIndex": {
+                    "value": "0"
+                  },
+                  "timeout": {
+                    "value": "5000"
+                  },
+                  "method": {
+                    "value": "inRegionHighestAccuracy"
+                  },
+                  "selectionRect": {
+                    "value": "93,448,422,212"
+                  },
+                  "elementRect": {
+                    "value": "0,0,3840,2160"
+                  },
+                  "dpi": {
+                    "value": "96"
+                  },
+                  "controlMetaType": "Image"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "512e9d4c-288c-4e16-b66a-9ab9db5f4171",
+      "name": "storebutton",
+      "filePath": "f679b28d-3368-4caf-9736-07efd3014aab.jpg",
+      "imageFilePath": "0932df95-8595-4a72-afd6-423664e075d9.jpg",
+      "content": {
+        "automationType": "Uia",
+        "processName": {
+          "value": "VALORANT-Win64-Shipping"
+        },
+        "filePath": {
+          "value": "VALORANT-Win64-Shipping.exe"
+        },
+        "version": {
+          "value": "1.3"
+        },
+        "childControls": [
+          {
+            "identifier": {
+              "automationId": {
+                "value": "",
+                "excluded": true
+              },
+              "isPassword": {
+                "value": "False",
+                "excluded": true
+              },
+              "orientation": {
+                "value": "None",
+                "excluded": true
+              },
+              "role": {
+                "value": "window"
+              },
+              "isDirectChild": {
+                "value": "True"
+              },
+              "className": {
+                "value": "UnrealWindow"
+              },
+              "controlMetaType": "Uia",
+              "name": {
+                "value": "VALORANT  "
+              },
+              "index": {
+                "value": "1",
+                "excluded": true
+              }
+            },
+            "childControls": [
+              {
+                "identifier": {
+                  "filePath": {
+                    "value": "0932df95-8595-4a72-afd6-423664e075d9.jpg"
+                  },
+                  "accuracy": {
+                    "value": "0.75"
+                  },
+                  "matchIndex": {
+                    "value": "0"
+                  },
+                  "timeout": {
+                    "value": "5000"
+                  },
+                  "method": {
+                    "value": "inRegionHighestAccuracy"
+                  },
+                  "selectionRect": {
+                    "value": "159,1625,242,144"
+                  },
+                  "elementRect": {
+                    "value": "0,0,3840,2159"
+                  },
+                  "dpi": {
+                    "value": "96"
+                  },
+                  "controlMetaType": "Image"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "d595ac47-3d91-4e36-a36c-0b42d6b89635",
+      "name": "storebackbutton",
+      "filePath": "6bd9bd85-e85c-4aee-8784-ab2c13fb4707.jpg",
+      "imageFilePath": "c3a370c9-91e6-471c-b94c-9c4162977dbc.jpg",
+      "content": {
+        "automationType": "Uia",
+        "processName": {
+          "value": "VALORANT-Win64-Shipping"
+        },
+        "filePath": {
+          "value": "VALORANT-Win64-Shipping.exe"
+        },
+        "version": {
+          "value": "1.3"
+        },
+        "childControls": [
+          {
+            "identifier": {
+              "automationId": {
+                "value": "",
+                "excluded": true
+              },
+              "isPassword": {
+                "value": "False",
+                "excluded": true
+              },
+              "orientation": {
+                "value": "None",
+                "excluded": true
+              },
+              "role": {
+                "value": "window"
+              },
+              "isDirectChild": {
+                "value": "True"
+              },
+              "className": {
+                "value": "UnrealWindow"
+              },
+              "controlMetaType": "Uia",
+              "name": {
+                "value": "VALORANT  "
+              },
+              "index": {
+                "value": "1",
+                "excluded": true
+              }
+            },
+            "childControls": [
+              {
+                "identifier": {
+                  "filePath": {
+                    "value": "c3a370c9-91e6-471c-b94c-9c4162977dbc.jpg"
+                  },
+                  "accuracy": {
+                    "value": "0.75"
+                  },
+                  "matchIndex": {
+                    "value": "0"
+                  },
+                  "timeout": {
+                    "value": "5000"
+                  },
+                  "method": {
+                    "value": "inRegionHighestAccuracy"
+                  },
+                  "selectionRect": {
+                    "value": "14,10,397,96"
+                  },
+                  "elementRect": {
+                    "value": "0,0,3840,2159"
+                  },
+                  "dpi": {
+                    "value": "96"
+                  },
+                  "controlMetaType": "Image"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "originalName": "valorant_win64_shipping"
+}
