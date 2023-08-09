@@ -23,7 +23,6 @@ SS_LOWER_RIGHT = (3575, 2038)
 SETTINGS_COORDS = (3769, 52)
 ETD_COORDS = (1918, 1353)
 SIGN_OUT_COORDS = (2250, 1223)
-LOGIN_CREDS = ("wilson289296", "PlsGrindBPTY<3")
 # =============================================================
 
 def to_thread(func):
@@ -49,27 +48,34 @@ def login(username, password):
 
     cc.send_hotkey("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\VALORANT.lnk{ENTER}")
 
+    timeout_start = perf_counter()
     while ImageGrab.grab(bbox=(
         RIOT_LOGO_PIXEL_COORDS[0], 
         RIOT_LOGO_PIXEL_COORDS[1], 
         RIOT_LOGO_PIXEL_COORDS[0]+1, 
         RIOT_LOGO_PIXEL_COORDS[1]+1)).getcolors()[0][1] != RIOT_LOGO_COLOR:
+        if perf_counter() - timeout_start > 60:
+            return perf_counter() - start, "error"
         sleep(0.25)
         print(".", end="")
 
     print("\nriot client loaded")
-    ui(locator.riotclientux.signintext).click()
-    cc.send_hotkey('{TAB}')
-    cc.send_hotkey(username)
-    cc.send_hotkey('{TAB}')
-    cc.send_hotkey(password)
-    ui(locator.riotclientux.redbutton).click()
+    # ui(locator.riotclientux.signintext).click()
+    cc.mouse.click(RIOT_LOGO_PIXEL_COORDS[0], RIOT_LOGO_PIXEL_COORDS[1]) #testing this instead of OCR on Riot logo for window focus
+    cc.send_hotkey('{TAB}' + username + '{TAB}' + password + '{ENTER}') #testing this instead of typing individually clicking sign in button
+    # cc.send_hotkey(username)
+    # cc.send_hotkey('{TAB}')
+    # cc.send_hotkey(password)
+    # ui(locator.riotclientux.redbutton).click()
 
     # OTP IS REQUESTED HERE
     otp_exists = False
     play_exists = False
+    timeout_start = perf_counter()
     print("waiting for OTP/Play")
     while not otp_exists and not play_exists:
+        if perf_counter() - timeout_start > 60:
+            return perf_counter() - start, "error"
         play_exists = cc.is_existing(locator.riotclientux.playbutton)
         if not play_exists:
             otp_exists = cc.is_existing(locator.riotclientux.verif_text)
@@ -80,17 +86,22 @@ def login(username, password):
         return perf_counter() - start, "otp"
 
     elif play_exists:
-        ui(locator.riotclientux.playbutton).click()
-        print("\nLogin successful, launching game")
+        try:
+            ui(locator.riotclientux.playbutton).click()
+            print("\nLogin successful, launching game")
+        except:
+            return perf_counter() - start, "error"
+        
 
     print("waiting for store")
 
     in_store = False
+    timeout_start = perf_counter()
     while not in_store:
-        # cc.mouse.move()
+        if perf_counter() - timeout_start > 60:
+            return perf_counter() - start, "error"
         cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
         sleep(0.1)
-        # in_store = cc.is_existing(locator.valorant_win64_shipping.storebackbutton)
         if ImageGrab.grab(bbox=(
             STORE_PLAY_COORDS[0], 
             STORE_PLAY_COORDS[1], 
@@ -144,11 +155,12 @@ def continue_otp(otp):
     print("waiting for store")
 
     in_store = False
+    timeout_start = perf_counter()
     while not in_store:
-        # cc.mouse.move()
+        if perf_counter() - timeout_start > 60:
+            return perf_counter() - start, "error"
         cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
         sleep(0.1)
-        # in_store = cc.is_existing(locator.valorant_win64_shipping.storebackbutton)
         if ImageGrab.grab(bbox=(
             STORE_PLAY_COORDS[0], 
             STORE_PLAY_COORDS[1], 
@@ -176,9 +188,5 @@ def continue_otp(otp):
     print("done!")
     print(f"elapsed: {perf_counter() - start}s")
     return perf_counter() - start, "done"
-
-
-if __name__ == "__main__":
-    login(LOGIN_CREDS[0], LOGIN_CREDS[1])
     
 

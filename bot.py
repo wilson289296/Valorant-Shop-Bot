@@ -123,7 +123,7 @@ async def process_queue():
                 picture = discord.File(f)
                 await channel.send(content=f"<@{task['discuser']}> time elapsed = {elap:.2f}s", file=picture)
             print(f"completed task for {task['user']}")
-        else:
+        elif result == "otp":
             print("Encountered OTP. Prompting user.")
             def check(message: discord.Message):
                 return message.channel.id == channel.id and message.author.id == task['discuser'] and len(message.content) == 6
@@ -144,6 +144,9 @@ async def process_queue():
                 else:
                     print("User submitted invalid OTP, cancelling job.")
                     await channel.send(content=f"<@{task['discuser']}> submitted invalid OTP. Login aborted.")
+        elif result == "error":
+            print("Process errored out or timed out.")
+            await channel.send(content=f"<@{task['discuser']}> BOT ERRORED OUT ***AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA***")
         await asyncio.sleep(5)
         working = False
 
