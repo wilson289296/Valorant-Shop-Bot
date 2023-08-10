@@ -15,6 +15,8 @@ RIOT_LOGO_COLOR = (235, 0, 41)
 RIOT_LOGO_PIXEL_COORDS = (1301,728)
 OTP_FIELD_COLOR = (238, 238, 238)
 OTP_CHECK_PIXEL_COORDS = (1473, 1007)
+PLAY_BUTTON_PIXEL_COORDS = (1257, 1450)
+PLAY_BUTTON_PIXEL_HUE = (252, 253)
 STORE_BUTTON_LOCATION = (130, 1687)
 STORE_PLAY_COLOR = (216, 57, 70)
 STORE_PLAY_COORDS = (1993, 64)
@@ -76,23 +78,30 @@ def login(username, password):
     while not otp_exists and not play_exists:
         if perf_counter() - timeout_start > 60:
             return perf_counter() - start, "error"
-        play_exists = cc.is_existing(locator.riotclientux.playbutton)
+        # play_exists = cc.is_existing(locator.riotclientux.playbutton) # THIS IS NOT RELIABLE, CHANGING TO PIXEL GRABBING
+        play_pixel_color = ImageGrab.grab(bbox=(
+            PLAY_BUTTON_PIXEL_COORDS[0], 
+            PLAY_BUTTON_PIXEL_COORDS[1], 
+            PLAY_BUTTON_PIXEL_COORDS[0]+1, 
+            PLAY_BUTTON_PIXEL_COORDS[1]+1)).getcolors()[0][1]
+        playhue = colorsys.rgb_to_hsv(play_pixel_color[0], play_pixel_color[1], play_pixel_color[2])[0] * 255
+        print(playhue)
+        if playhue > PLAY_BUTTON_PIXEL_HUE[0] and playhue < PLAY_BUTTON_PIXEL_HUE[1]:
+            play_exists = True
         if not play_exists:
             otp_exists = cc.is_existing(locator.riotclientux.verif_text)
         print(".", end="")
         sleep(0.25)
     
     if otp_exists:
+        print("OTP prompt detected")
         return perf_counter() - start, "otp"
 
     elif play_exists:
-        try:
-            ui(locator.riotclientux.playbutton).click()
-            print("\nLogin successful, launching game")
-        except:
-            return perf_counter() - start, "error"
+        print("Play button detected")
+        cc.mouse.click(PLAY_BUTTON_PIXEL_COORDS[0], PLAY_BUTTON_PIXEL_COORDS[1])
+        sleep(10)
         
-
     print("waiting for store")
 
     in_store = False
