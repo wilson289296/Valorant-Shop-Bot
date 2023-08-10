@@ -39,38 +39,20 @@ def to_thread(func):
 def login(username, password):
     start = perf_counter()
 
+    # ====================== WIN R ==========================
     cc.send_hotkey('{WIN DOWN}r{WIN UP}')
-    while ImageGrab.grab(bbox=(
-        WINR_COORDS[0], 
-        WINR_COORDS[1], 
-        WINR_COORDS[0]+1, 
-        WINR_COORDS[1]+1)).getcolors()[0][1] != WINR_COLOR:
-        sleep(0.25)
-        print(".", end="")
-
+    if not detect_pixel_exact_timeout(WINR_COORDS, WINR_COLOR, 10):
+        return perf_counter() - start, "error"
     cc.send_hotkey("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\VALORANT.lnk{ENTER}")
 
-    timeout_start = perf_counter()
-    while ImageGrab.grab(bbox=(
-        RIOT_LOGO_PIXEL_COORDS[0], 
-        RIOT_LOGO_PIXEL_COORDS[1], 
-        RIOT_LOGO_PIXEL_COORDS[0]+1, 
-        RIOT_LOGO_PIXEL_COORDS[1]+1)).getcolors()[0][1] != RIOT_LOGO_COLOR:
-        if perf_counter() - timeout_start > 60:
-            return perf_counter() - start, "error"
-        sleep(0.25)
-        print(".", end="")
-
+    # ===================== RIOT CLIENT =====================
+    if not detect_pixel_exact_timeout(RIOT_LOGO_PIXEL_COORDS, RIOT_LOGO_COLOR, 60):
+        return perf_counter() - start, "error"
     print("\nriot client loaded")
-    # ui(locator.riotclientux.signintext).click()
-    cc.mouse.click(RIOT_LOGO_PIXEL_COORDS[0], RIOT_LOGO_PIXEL_COORDS[1]) #testing this instead of OCR on Riot logo for window focus
-    cc.send_hotkey('{TAB}' + username + '{TAB}' + password + '{ENTER}') #testing this instead of typing individually clicking sign in button
-    # cc.send_hotkey(username)
-    # cc.send_hotkey('{TAB}')
-    # cc.send_hotkey(password)
-    # ui(locator.riotclientux.redbutton).click()
+    cc.mouse.click(RIOT_LOGO_PIXEL_COORDS[0], RIOT_LOGO_PIXEL_COORDS[1]) 
+    cc.send_hotkey('{TAB}' + username + '{TAB}' + password + '{ENTER}')
 
-    # OTP IS REQUESTED HERE
+    # ================= RIOT CLIENT OTP/PLAY =================
     otp_exists = False
     play_exists = False
     timeout_start = perf_counter()
@@ -78,16 +60,7 @@ def login(username, password):
     while not otp_exists and not play_exists:
         if perf_counter() - timeout_start > 60:
             return perf_counter() - start, "error"
-        # play_exists = cc.is_existing(locator.riotclientux.playbutton) # THIS IS NOT RELIABLE, CHANGING TO PIXEL GRABBING
-        play_pixel_color = ImageGrab.grab(bbox=(
-            PLAY_BUTTON_PIXEL_COORDS[0], 
-            PLAY_BUTTON_PIXEL_COORDS[1], 
-            PLAY_BUTTON_PIXEL_COORDS[0]+1, 
-            PLAY_BUTTON_PIXEL_COORDS[1]+1)).getcolors()[0][1]
-        playhue = colorsys.rgb_to_hsv(play_pixel_color[0], play_pixel_color[1], play_pixel_color[2])[0] * 255
-        print(playhue)
-        if playhue > PLAY_BUTTON_PIXEL_HUE[0] and playhue < PLAY_BUTTON_PIXEL_HUE[1]:
-            play_exists = True
+        play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
             otp_exists = cc.is_existing(locator.riotclientux.verif_text)
         print(".", end="")
@@ -104,36 +77,42 @@ def login(username, password):
         
     print("Clicked play, waiting for store")
 
-    in_store = False
-    timeout_start = perf_counter()
-    while not in_store:
-        if perf_counter() - timeout_start > 60:
-            return perf_counter() - start, "error"
-        cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-        sleep(0.1)
-        if ImageGrab.grab(bbox=(
-            STORE_PLAY_COORDS[0], 
-            STORE_PLAY_COORDS[1], 
-            STORE_PLAY_COORDS[0]+1, 
-            STORE_PLAY_COORDS[1]+1)).getcolors()[0][1] == STORE_PLAY_COLOR:
-            in_store = True
+    # =================== IN GAME =======================
+    if in_game():
+        return perf_counter() - start, "done"
+    else:
+        return perf_counter() - start, "error"
+    # in_store = False
+    # timeout_start = perf_counter()
+    # while not in_store:
+    #     if perf_counter() - timeout_start > 60:
+    #         return perf_counter() - start, "error"
+    #     cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+    #     sleep(0.1)
+    #     in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
+    #     # if ImageGrab.grab(bbox=(
+    #     #     STORE_PLAY_COORDS[0], 
+    #     #     STORE_PLAY_COORDS[1], 
+    #     #     STORE_PLAY_COORDS[0]+1, 
+    #     #     STORE_PLAY_COORDS[1]+1)).getcolors()[0][1] == STORE_PLAY_COLOR:
+    #     #     in_store = True
     
-    print("In store, capturing screenshot")
-    store_ss = ImageGrab.grab(bbox=(
-        SS_UPPER_LEFT[0],
-        SS_UPPER_LEFT[1],
-        SS_LOWER_RIGHT[0],
-        SS_LOWER_RIGHT[1]
-    ))
-    store_ss.save("ss.png")
+    # print("In store, capturing screenshot")
+    # store_ss = ImageGrab.grab(bbox=(
+    #     SS_UPPER_LEFT[0],
+    #     SS_UPPER_LEFT[1],
+    #     SS_LOWER_RIGHT[0],
+    #     SS_LOWER_RIGHT[1]
+    # ))
+    # store_ss.save("ss.png")
 
-    print("signing out and closing valorant")
+    # print("signing out and closing valorant")
     # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
-    cc.mouse.click(SETTINGS_COORDS[0], SETTINGS_COORDS[1])
-    sleep(0.1)
-    cc.mouse.click(ETD_COORDS[0], ETD_COORDS[1])
-    sleep(0.1)
-    cc.mouse.click(SIGN_OUT_COORDS[0], SIGN_OUT_COORDS[1])
+    # cc.mouse.click(SETTINGS_COORDS[0], SETTINGS_COORDS[1])
+    # sleep(0.1)
+    # cc.mouse.click(ETD_COORDS[0], ETD_COORDS[1])
+    # sleep(0.1)
+    # cc.mouse.click(SIGN_OUT_COORDS[0], SIGN_OUT_COORDS[1])
 
     print("done!")
     print(f"elapsed: {perf_counter() - start}s")
@@ -146,9 +125,12 @@ def continue_otp(otp):
     cc.send_hotkey(otp + '{TAB}{ENTER}')
     play_exists = False
     otp_fail = False
+    timeout_start = perf_counter()
     print("waiting for OTP/Play")
     while not otp_fail and not play_exists:
-        play_exists = cc.is_existing(locator.riotclientux.playbutton)
+        if perf_counter() - timeout_start > 60:
+            return perf_counter() - start, "error"
+        play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
             otp_fail = cc.is_existing(locator.riotclientux.invalid_otp)
         print(".", end="")
@@ -158,24 +140,84 @@ def continue_otp(otp):
         return perf_counter() - start, "invalid"
     
     elif play_exists:
-        ui(locator.riotclientux.playbutton).click()
-        print("\nLogin successful, launching game")
+        print("Play button detected")
+        sleep(3)
+        cc.mouse.click(PLAY_BUTTON_PIXEL_COORDS[0], PLAY_BUTTON_PIXEL_COORDS[1])
 
-    print("waiting for store")
+    print("Clicked play, waiting for store")
 
+    if in_game():
+        return perf_counter() - start, "done"
+    else:
+        return perf_counter() - start, "error"
+
+    # in_store = False
+    # timeout_start = perf_counter()
+    # while not in_store:
+    #     if perf_counter() - timeout_start > 60:
+    #         return perf_counter() - start, "error"
+    #     cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+    #     sleep(0.1)
+    #     in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
+    
+    # print("In store, capturing screenshot")
+    # store_ss = ImageGrab.grab(bbox=(
+    #     SS_UPPER_LEFT[0],
+    #     SS_UPPER_LEFT[1],
+    #     SS_LOWER_RIGHT[0],
+    #     SS_LOWER_RIGHT[1]
+    # ))
+    # store_ss.save("ss.png")
+
+    # print("signing out and closing valorant")
+    # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
+
+    # print("done!")
+    # print(f"elapsed: {perf_counter() - start}s")
+    # return perf_counter() - start, "done"
+    
+def detect_pixel_exact_timeout(coords, color, timeout):
+    start = perf_counter()
+    while not detect_pixel_exact(coords, color):
+        if perf_counter() - start > timeout:
+            return False
+        sleep(0.25)
+    return True
+
+def detect_pixel_exact(coords, color):
+    if ImageGrab.grab(bbox=(
+        coords[0], 
+        coords[1], 
+        coords[0]+1, 
+        coords[1]+1)).getcolors()[0][1] != color:
+        return False
+    else:
+        return True
+    
+def detect_pixel(coords, target_hue):
+    pixel_color = ImageGrab.grab(bbox=(
+        coords[0],
+        coords[1],
+        coords[0]+1,
+        coords[1]+1)).getcolors()[0][1]
+    pixel_hue = colorsys.rgb_to_hsv(
+        pixel_color[0], 
+        pixel_color[1], 
+        pixel_color[2])[0] * 255
+    if pixel_hue > target_hue[0] and pixel_hue < target_hue[1]:
+        return True
+    else:
+        return False
+    
+def in_game():
     in_store = False
     timeout_start = perf_counter()
     while not in_store:
         if perf_counter() - timeout_start > 60:
-            return perf_counter() - start, "error"
+            return False
         cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
         sleep(0.1)
-        if ImageGrab.grab(bbox=(
-            STORE_PLAY_COORDS[0], 
-            STORE_PLAY_COORDS[1], 
-            STORE_PLAY_COORDS[0]+1, 
-            STORE_PLAY_COORDS[1]+1)).getcolors()[0][1] == STORE_PLAY_COLOR:
-            in_store = True
+        in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
     
     print("In store, capturing screenshot")
     store_ss = ImageGrab.grab(bbox=(
@@ -187,15 +229,9 @@ def continue_otp(otp):
     store_ss.save("ss.png")
 
     print("signing out and closing valorant")
-    # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
-    cc.mouse.click(SETTINGS_COORDS[0], SETTINGS_COORDS[1])
-    sleep(0.1)
-    cc.mouse.click(ETD_COORDS[0], ETD_COORDS[1])
-    sleep(0.1)
-    cc.mouse.click(SIGN_OUT_COORDS[0], SIGN_OUT_COORDS[1])
+    cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
 
     print("done!")
-    print(f"elapsed: {perf_counter() - start}s")
-    return perf_counter() - start, "done"
-    
+    return True
+
 
