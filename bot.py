@@ -138,8 +138,9 @@ async def process_queue():
                     print("User submitted invalid OTP, cancelling job.")
                     await channel.send(content=f"<@{task['discuser']}> submitted invalid OTP. Login aborted.")
         elif result == "error":
-            print("Process errored out or timed out.")
-            await channel.send(content=f"<@{task['discuser']}> BOT ERRORED OUT ***AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA***")
+            print("Process errored out or timed out, requeueing task to try again.")
+            await channel.send(content=f"<@{task['discuser']}> I messed up but I'll try again rn*")
+            task_queue.insert(0, task)
         await asyncio.sleep(5)
         working = False
 
