@@ -92,41 +92,6 @@ def login(username, password):
         return perf_counter() - start, "done"
     else:
         return perf_counter() - start, "error"
-    # in_store = False
-    # timeout_start = perf_counter()
-    # while not in_store:
-    #     if perf_counter() - timeout_start > 60:
-    #         return perf_counter() - start, "error"
-    #     cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-    #     sleep(0.1)
-    #     in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
-    #     # if ImageGrab.grab(bbox=(
-    #     #     STORE_PLAY_COORDS[0], 
-    #     #     STORE_PLAY_COORDS[1], 
-    #     #     STORE_PLAY_COORDS[0]+1, 
-    #     #     STORE_PLAY_COORDS[1]+1)).getcolors()[0][1] == STORE_PLAY_COLOR:
-    #     #     in_store = True
-    
-    # print("In store, capturing screenshot")
-    # store_ss = ImageGrab.grab(bbox=(
-    #     SS_UPPER_LEFT[0],
-    #     SS_UPPER_LEFT[1],
-    #     SS_LOWER_RIGHT[0],
-    #     SS_LOWER_RIGHT[1]
-    # ))
-    # store_ss.save("ss.png")
-
-    # print("signing out and closing valorant")
-    # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
-    # cc.mouse.click(SETTINGS_COORDS[0], SETTINGS_COORDS[1])
-    # sleep(0.1)
-    # cc.mouse.click(ETD_COORDS[0], ETD_COORDS[1])
-    # sleep(0.1)
-    # cc.mouse.click(SIGN_OUT_COORDS[0], SIGN_OUT_COORDS[1])
-
-    print("done!")
-    print(f"elapsed: {perf_counter() - start}s")
-    return perf_counter() - start, "done"
 
 @to_thread
 def continue_otp(otp):
@@ -163,35 +128,11 @@ def continue_otp(otp):
 
     print("Clicked play, waiting for store")
 
+    # =================== IN GAME =======================
     if in_game():
         return perf_counter() - start, "done"
     else:
         return perf_counter() - start, "error"
-
-    # in_store = False
-    # timeout_start = perf_counter()
-    # while not in_store:
-    #     if perf_counter() - timeout_start > 60:
-    #         return perf_counter() - start, "error"
-    #     cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-    #     sleep(0.1)
-    #     in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
-    
-    # print("In store, capturing screenshot")
-    # store_ss = ImageGrab.grab(bbox=(
-    #     SS_UPPER_LEFT[0],
-    #     SS_UPPER_LEFT[1],
-    #     SS_LOWER_RIGHT[0],
-    #     SS_LOWER_RIGHT[1]
-    # ))
-    # store_ss.save("ss.png")
-
-    # print("signing out and closing valorant")
-    # cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
-
-    # print("done!")
-    # print(f"elapsed: {perf_counter() - start}s")
-    # return perf_counter() - start, "done"
     
 def detect_pixel_exact_timeout(coords, color, timeout):
     start = perf_counter()
