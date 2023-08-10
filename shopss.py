@@ -59,7 +59,13 @@ def login(username, password):
     print("waiting for OTP/Play")
     while not otp_exists and not play_exists:
         if perf_counter() - timeout_start > 60:
-            return perf_counter() - start, "error"
+            # last chance, game may be open to main menu
+            cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            if detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR):
+                ss()
+                return perf_counter() - start, "done"
+            else:
+                return perf_counter() - start, "error"
         play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
             otp_exists = cc.is_existing(locator.riotclientux.verif_text)
@@ -129,7 +135,13 @@ def continue_otp(otp):
     print("waiting for OTP/Play")
     while not otp_fail and not play_exists:
         if perf_counter() - timeout_start > 60:
-            return perf_counter() - start, "error"
+            # last chance, game may be open to main menu
+            cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            if detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR):
+                ss()
+                return perf_counter() - start, "done"
+            else:
+                return perf_counter() - start, "error"
         play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
             otp_fail = cc.is_existing(locator.riotclientux.invalid_otp)
@@ -221,6 +233,9 @@ def in_game():
         sleep(0.1)
         in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
     
+    return ss()
+
+def ss():
     print("In store, capturing screenshot")
     store_ss = ImageGrab.grab(bbox=(
         SS_UPPER_LEFT[0],
@@ -235,5 +250,3 @@ def in_game():
 
     print("done!")
     return True
-
-
