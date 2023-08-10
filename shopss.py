@@ -62,13 +62,14 @@ def login(username, password):
             # last chance, game may be open to main menu
             print("Testing last chance")
             cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-            sleep(0.1)
+            sleep(0.25)
             if detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR):
                 print("Last chance success!")
                 ss()
                 return perf_counter() - start, "done"
             else:
                 print("Last chance failed")
+                cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
                 return perf_counter() - start, "error"
         play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
@@ -106,11 +107,14 @@ def continue_otp(otp):
         if perf_counter() - timeout_start > 60:
             # last chance, game may be open to main menu
             cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-            sleep(0.1)
+            sleep(0.25)
             if detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR):
+                print("Last chance success!")
                 ss()
                 return perf_counter() - start, "done"
             else:
+                print("Last chance failed")
+                cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
                 return perf_counter() - start, "error"
         play_exists = detect_pixel(PLAY_BUTTON_PIXEL_COORDS, PLAY_BUTTON_PIXEL_HUE)
         if not play_exists:
