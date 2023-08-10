@@ -99,10 +99,10 @@ def login(username, password):
 
     elif play_exists:
         print("Play button detected")
+        sleep(3)
         cc.mouse.click(PLAY_BUTTON_PIXEL_COORDS[0], PLAY_BUTTON_PIXEL_COORDS[1])
-        sleep(10)
         
-    print("waiting for store")
+    print("Clicked play, waiting for store")
 
     in_store = False
     timeout_start = perf_counter()
