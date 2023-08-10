@@ -214,6 +214,8 @@ def in_game():
     timeout_start = perf_counter()
     while not in_store:
         if perf_counter() - timeout_start > 60:
+            print("Valorant probably had connectivity error")
+            cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
             return False
         cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
         sleep(0.1)
