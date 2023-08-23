@@ -5,6 +5,7 @@ import colorsys
 import asyncio
 from functools import partial, wraps
 import base64
+import pyautogui as pag
 
 # ============================MACROS===========================
 START_MENU_HUE_RANGE = (135, 165)
@@ -18,6 +19,7 @@ OTP_CHECK_PIXEL_COORDS = (1473, 1007)
 PLAY_BUTTON_PIXEL_COORDS = (1257, 1450)
 PLAY_BUTTON_PIXEL_HUE = (252, 253)
 STORE_BUTTON_LOCATION = (130, 1687)
+SPLASH_COLOR = (253, 235, 206)
 STORE_PLAY_COLOR = (216, 57, 70)
 STORE_PLAY_COORDS = (1993, 64)
 SS_UPPER_LEFT = (157, 1520)
@@ -86,10 +88,10 @@ def login(username, password):
         sleep(3)
         cc.mouse.click(PLAY_BUTTON_PIXEL_COORDS[0], PLAY_BUTTON_PIXEL_COORDS[1])
         
-    print("Clicked play, waiting for store")
+    print("Clicked play, waiting for splash...")
 
     # =================== IN GAME =======================
-    if in_game():
+    if wait_splash() and in_game():
         return perf_counter() - start, "done"
     else:
         return perf_counter() - start, "error"
@@ -106,7 +108,9 @@ def continue_otp(otp):
     while not otp_fail and not play_exists:
         if perf_counter() - timeout_start > 60:
             # last chance, game may be open to main menu
-            cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            # cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            cc.send_hotkey("{ALT DOWN}{TAB}{ALT UP}")
+            pag.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
             sleep(0.25)
             if detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR):
                 print("Last chance success!")
@@ -130,10 +134,11 @@ def continue_otp(otp):
         sleep(3)
         cc.mouse.click(PLAY_BUTTON_PIXEL_COORDS[0], PLAY_BUTTON_PIXEL_COORDS[1])
 
-    print("Clicked play, waiting for store")
+    print("Clicked play, waiting for splash...")
 
     # =================== IN GAME =======================
-    if in_game():
+    # new, wait out splash screen when it takes control of the cursor
+    if wait_splash() and in_game():
         return perf_counter() - start, "done"
     else:
         return perf_counter() - start, "error"
@@ -170,16 +175,27 @@ def detect_pixel(coords, target_hue):
         return True
     else:
         return False
-    
+
+def wait_splash():
+    splash = detect_pixel_exact_timeout((0,0), SPLASH_COLOR, 50)
+    if splash:
+        print("Splash detected, starting store click spam.")
+        cc.send_hotkey("{ALT DOWN}{TAB}{ALT UP}")
+        sleep(1)
+    else:
+        print("No splash detected.")
+    return splash
+
 def in_game():
     in_store = False
     timeout_start = perf_counter()
     while not in_store:
-        if perf_counter() - timeout_start > 60:
+        if perf_counter() - timeout_start > 50:
             print("Valorant probably had connectivity error")
             cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
             return False
-        cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+        # cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+        pag.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
         sleep(0.1)
         in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
     
