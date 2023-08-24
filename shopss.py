@@ -213,8 +213,9 @@ def ss():
     ))
     # store_ss.save("ss1.png")
 
-    print("In accessory store, capturing accessory store screenshot")
     pag.click(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1])
+    sleep(0.5)
+    print("In accessory store, capturing accessory store screenshot")
     acc_ss = ImageGrab.grab(bbox=(
         SS_UPPER_LEFT[0],
         SS_UPPER_LEFT[1],
