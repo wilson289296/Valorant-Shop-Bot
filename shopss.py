@@ -20,10 +20,12 @@ PLAY_BUTTON_PIXEL_COORDS = (1257, 1450)
 PLAY_BUTTON_PIXEL_HUE = (252, 253)
 STORE_BUTTON_LOCATION = (130, 1687)
 SPLASH_COLOR = (253, 235, 206)
+# SPLASH_COLOR = (252, 235, 206) # ?????????????
 STORE_PLAY_COLOR = (216, 57, 70)
 STORE_PLAY_COORDS = (1993, 64)
 SS_UPPER_LEFT = (157, 1520)
 SS_LOWER_RIGHT = (3575, 2038)
+ACCESSORIES_COORDS = (2148, 169)
 SETTINGS_COORDS = (3769, 52)
 ETD_COORDS = (1918, 1353)
 SIGN_OUT_COORDS = (2250, 1223)
@@ -177,7 +179,7 @@ def detect_pixel(coords, target_hue):
         return False
 
 def wait_splash():
-    splash = detect_pixel_exact_timeout((0,0), SPLASH_COLOR, 50)
+    splash = detect_pixel_exact_timeout((20,20), SPLASH_COLOR, 50)
     if splash:
         print("Splash detected, starting store click spam.")
         cc.send_hotkey("{ALT DOWN}{TAB}{ALT UP}")
@@ -202,14 +204,29 @@ def in_game():
     return ss()
 
 def ss():
-    print("In store, capturing screenshot")
+    print("In store, capturing main store screenshot")
     store_ss = ImageGrab.grab(bbox=(
         SS_UPPER_LEFT[0],
         SS_UPPER_LEFT[1],
         SS_LOWER_RIGHT[0],
         SS_LOWER_RIGHT[1]
     ))
-    store_ss.save("ss.png")
+    # store_ss.save("ss1.png")
+
+    print("In accessory store, capturing accessory store screenshot")
+    pag.click(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1])
+    acc_ss = ImageGrab.grab(bbox=(
+        SS_UPPER_LEFT[0],
+        SS_UPPER_LEFT[1],
+        SS_LOWER_RIGHT[0],
+        SS_LOWER_RIGHT[1]
+    ))
+    # acc_ss.save("ss2.png")
+    ss = Image.new("RGB", (3418, 1036))
+    ss.paste(store_ss, (0,0))
+    ss.paste(acc_ss, (0, 518))
+    ss.save("ss.png")
+
 
     print("signing out and closing valorant")
     cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
