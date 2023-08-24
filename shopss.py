@@ -162,6 +162,14 @@ def detect_pixel_exact(coords, color):
         return False
     else:
         return True
+
+def get_pixel(coords):
+    pixel = ImageGrab.grab(bbox=(
+        coords[0], 
+        coords[1], 
+        coords[0]+1, 
+        coords[1]+1)).getcolors()[0][1]
+    return pixel
     
 def detect_pixel(coords, target_hue):
     pixel_color = ImageGrab.grab(bbox=(
@@ -189,19 +197,27 @@ def wait_splash():
     return splash
 
 def in_game():
-    in_store = False
-    timeout_start = perf_counter()
-    while not in_store:
-        if perf_counter() - timeout_start > 50:
-            print("Valorant probably had connectivity error")
-            cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
-            return False
-        # cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-        pag.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
-        sleep(0.1)
-        in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
-    
-    return ss()
+    try:
+        in_store = False
+        timeout_start = perf_counter()
+        while not in_store:
+            if perf_counter() - timeout_start > 50:
+                print("Valorant probably had connectivity error")
+                cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
+                return False
+            # cc.mouse.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            pag.click(STORE_BUTTON_LOCATION[0], STORE_BUTTON_LOCATION[1])
+            sleep(0.1)
+            in_store = detect_pixel_exact(STORE_PLAY_COORDS, STORE_PLAY_COLOR)
+        
+        return ss()
+    except:
+        cc.send_hotkey("{ALT DOWN}{TAB}{ALT UP}")
+        sleep(0.5)
+        cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
+        sleep(3)
+        return False
+
 
 def ss():
     print("In store, capturing main store screenshot")
@@ -211,10 +227,17 @@ def ss():
         SS_LOWER_RIGHT[0],
         SS_LOWER_RIGHT[1]
     ))
-    # store_ss.save("ss1.png")
-
-    pag.click(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1])
-    sleep(0.5)
+    
+    print(f"Spamming accessory tab to navigate over")
+    test_coords = (500, 1700)
+    original = get_pixel(test_coords)
+    in_acc = False
+    while not in_acc:
+        pag.click(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1])
+        if original != get_pixel(test_coords):
+            in_acc = True
+        sleep(0.5)
+    
     print("In accessory store, capturing accessory store screenshot")
     acc_ss = ImageGrab.grab(bbox=(
         SS_UPPER_LEFT[0],
