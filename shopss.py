@@ -6,6 +6,7 @@ import asyncio
 from functools import partial, wraps
 import base64
 import pyautogui as pag
+from random import randint
 
 # ============================MACROS===========================
 START_MENU_HUE_RANGE = (135, 165)
@@ -19,13 +20,13 @@ OTP_CHECK_PIXEL_COORDS = (1473, 1007)
 PLAY_BUTTON_PIXEL_COORDS = (1257, 1450)
 PLAY_BUTTON_PIXEL_HUE = (252, 253)
 STORE_BUTTON_LOCATION = (130, 1687)
-SPLASH_COLOR = (253, 235, 206)
-# SPLASH_COLOR = (252, 235, 206) # ?????????????
+# SPLASH_COLOR = (253, 235, 206)
+SPLASH_COLOR = (252, 235, 206) # ?????????????
 STORE_PLAY_COLOR = (216, 57, 70)
 STORE_PLAY_COORDS = (1993, 64)
 SS_UPPER_LEFT = (157, 1520)
 SS_LOWER_RIGHT = (3575, 2038)
-ACCESSORIES_COORDS = (2148, 169)
+ACCESSORIES_COORDS = (2148, 176)
 SETTINGS_COORDS = (3769, 52)
 ETD_COORDS = (1918, 1353)
 SIGN_OUT_COORDS = (2250, 1223)
@@ -229,27 +230,33 @@ def ss():
     ))
     
     print(f"Spamming accessory tab to navigate over")
-    test_coords = (500, 1700)
+    test_coords = (180, 1990)
     original = get_pixel(test_coords)
     in_acc = False
-    while not in_acc:
+    timeout = 20
+    start = perf_counter()
+    while not in_acc and perf_counter() - start < timeout:
+        pag.moveTo(ACCESSORIES_COORDS[0]+randint(-75, 75), ACCESSORIES_COORDS[1]+randint(-75, 75), 0.5)
+        pag.moveTo(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1], 0.5)
         pag.click(ACCESSORIES_COORDS[0], ACCESSORIES_COORDS[1])
         if original != get_pixel(test_coords):
             in_acc = True
-        sleep(0.5)
     
-    print("In accessory store, capturing accessory store screenshot")
-    acc_ss = ImageGrab.grab(bbox=(
-        SS_UPPER_LEFT[0],
-        SS_UPPER_LEFT[1],
-        SS_LOWER_RIGHT[0],
-        SS_LOWER_RIGHT[1]
-    ))
-    # acc_ss.save("ss2.png")
-    ss = Image.new("RGB", (3418, 1036))
-    ss.paste(store_ss, (0,0))
-    ss.paste(acc_ss, (0, 518))
-    ss.save("ss.png")
+    if in_acc:
+        print("In accessory store, capturing accessory store screenshot")
+        acc_ss = ImageGrab.grab(bbox=(
+            SS_UPPER_LEFT[0],
+            SS_UPPER_LEFT[1],
+            SS_LOWER_RIGHT[0],
+            SS_LOWER_RIGHT[1]
+        ))
+        # acc_ss.save("ss2.png")
+        ss = Image.new("RGB", (3418, 1036))
+        ss.paste(store_ss, (0,0))
+        ss.paste(acc_ss, (0, 518))
+        ss.save("ss.png")
+    else:
+        store_ss.save("ss.png") #fallback in case can't get into accessory page
 
 
     print("signing out and closing valorant")
