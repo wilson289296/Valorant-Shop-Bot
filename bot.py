@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
-from shopss import login, continue_otp
+from shopss import login, continue_otp, abort_otp
 import json
 import os
 import asyncio
@@ -123,6 +123,7 @@ async def process_queue():
                 message = await bot.wait_for('message', check=check, timeout=120.0)
             except asyncio.TimeoutError:
                 print("User did not respond in time, cancelling job.")
+                await abort_otp()
                 await channel.send(content=f"<@{task['discuser']}> did not respond with OTP in time. Login aborted.")
             else:
                 elap2, result = await continue_otp(message.content)

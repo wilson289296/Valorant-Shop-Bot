@@ -100,6 +100,11 @@ def login(username, password):
         return perf_counter() - start, "error"
 
 @to_thread
+def abort_otp():
+    print("no OTP to enter, exiting client")
+    cc.send_hotkey("{ALT DOWN}{F4}{ALT UP}")
+
+@to_thread
 def continue_otp(otp):
     start = perf_counter()
     print("Received OTP from user, entering")
